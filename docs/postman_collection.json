@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "API Escolar",
+    "_postman_id": "api-escolar-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear estudiante",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cedula\": \"0850034968\",\n  \"nombres\": \"Saul\",\n  \"apellidos\": \"Campo\",\n  \"curso\": \"3ro BGU\",\n  \"promedio\": 18,\n  \"materias\": [\n    \"Matem\\u00e1tica\",\n    \"Lengua\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/estudiantes",
+          "host": [
+            "http://localhost:3000"
+          ],
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar con filtros",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:3000/api/estudiantes?q=saul&curso=3ro%20BGU&minProm=15&maxProm=20&page=1&limit=10&sort=-promedio",
+          "host": [
+            "http://localhost:3000"
+          ],
+          "path": [
+            "api",
+            "estudiantes"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "saul"
+            },
+            {
+              "key": "curso",
+              "value": "3ro BGU"
+            },
+            {
+              "key": "minProm",
+              "value": "15"
+            },
+            {
+              "key": "maxProm",
+              "value": "20"
+            },
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "sort",
+              "value": "-promedio"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Detalle estudiante",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/api/estudiantes/:id"
+      }
+    },
+    {
+      "name": "Actualizar estudiante",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"promedio\": 19\n}"
+        },
+        "url": "http://localhost:3000/api/estudiantes/:id"
+      }
+    },
+    {
+      "name": "Eliminar estudiante",
+      "request": {
+        "method": "DELETE",
+        "url": "http://localhost:3000/api/estudiantes/:id"
+      }
+    }
+  ]
+}
